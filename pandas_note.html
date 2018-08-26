@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+	<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="author" content="Abhishek Bajpai">
+
+
+        <title>devnotes - Pandas&nbsp;Note</title>
+
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./theme/css/style.css">
+
+        <!-- Custom CSS -->
+        	<link rel="stylesheet" href="./theme/css/colors/red.css" id="colors">
+
+        <!-- Code highlight color scheme -->
+            <link href="./theme/css/code_blocks/darkly.css" rel="stylesheet">
+
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+
+        <meta name="tags" contents="python" />
+        <meta name="tags" contents="pandas" />
+
+	                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="devnotes">
+
+	<meta property="og:type" content="article">
+	<meta property="article:author" content="">
+	<meta property="og:url" content="./pandas_note.html">
+	<meta property="og:title" content="Pandas&nbsp;Note">
+	<meta property="og:description" content="">
+	   <meta property="og:image" content="./images/guilherme-toti.jpg">
+	<meta property="article:published_time" content="2018-08-26 10:20:00+05:30">
+	</head>
+	<body>
+		<header id="header">
+			<!-- Container -->
+			<div class="container">
+				<!-- Logo / Mobile Menu -->
+				<div class="five columns">
+					<div id="textlogo">
+						<h1><a href="./">devnotes</a></h1>
+					</div>
+				</div>
+						<!-- Navigation
+				================================================== -->
+				<div class="eleven columns">
+
+					<nav id="navigation" class="menu">
+						<ul id="responsive">
+
+							<li><a href="./">Home</a></li>
+
+
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- Container / End -->
+		</header>
+		<!-- Header / End -->
+
+		<!-- Breadcrumbs Container-->
+		<div id="content-wrapper">
+			<section id="titlebar">
+				<!-- Container -->
+				<div class="container">
+				<div class="thirteen columns">
+					<nav id="breadcrumbs">
+						<ul>
+							<li>You are here:</li>
+							<li><a href="./">Home</a></li>
+<li><a href="./category/notes.html">notes</a></li>
+<li>Pandas&nbsp;Note</li>
+						</ul>
+					</nav>
+				</div>
+				</div>
+				<!-- Container / End -->
+			</section>
+
+			<div class="container">
+	<div class="twelve alt columns">
+<article class="post" style="margin: 0; border: 0;">
+
+	<div class="post-format">
+		<div class="circle"><i class="icon-pencil"></i><span></span></div>
+	</div>
+
+	<section class="post-content">
+
+		<header class="meta">
+			<h2><a href="./pandas_note.html">Pandas&nbsp;Note</a></h2>
+			<ul>
+				<li>By <a href="./author/abhishek-bajpai.html">Abhishek Bajpai</a></li>
+				<li>Sun 26 August 2018</li>
+			</ul>
+		</header>
+
+		<h1>Iterate over rows in a&nbsp;DataFrame</h1>
+<p>iterrows is a generator which yield both index and&nbsp;row</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Abhishek&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="mi">31</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Anurag&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">},])</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">])</span>
+</pre></div>
+		    <div class="tags">
+		        <p>tags: <a href="./tag/python.html">python</a><a href="./tag/pandas.html">pandas</a></p>
+		    </div>
+
+<div class="sharing">
+</div>
+<hr>
+
+	</section>
+	<div class="clearfix"></div>
+
+</article>
+
+	</div>
+
+	<!-- Sidebar -->
+	<div class="four columns">
+		<!-- About  -->
+		<div class="widget no-mg-top">
+			<h3 class="headline">About</h3><span class="line"></span><div class="clearfix"></div>
+			<p>This is the place holder for my technical endivors.</p>
+		</div>
+
+		<!-- Categories -->
+		<div class="widget">
+			<h3 class="headline">Categories</h3><span class="line"></span><div class="clearfix"></div>
+			<nav class="categories">
+				<ul>
+					    <li><a href="./category/misc.html">misc</a></li>
+					    <li><a href="./category/myhdl.html">Myhdl</a></li>
+					    <li class="active"><a href="./category/notes.html">notes</a></li>
+					    <li><a href="./category/web2py.html">web2py</a></li>
+				</ul>
+			</nav>
+		</div>
+		
+		<!-- Tags -->
+		<div class="widget">
+			<h3 class="headline">Tags</h3><span class="line"></span><div class="clearfix"></div>
+			<nav class="tags">				    <a href="./tag/myhdl.html">Myhdl</a>
+				    <a href="./tag/pandas.html">pandas</a>
+				    <a href="./tag/python.html">python</a>
+				    <a href="./tag/web2py.html">web2py</a>
+			</nav>
+		</div>
+	</div>
+			</div>
+			<!-- Container / End -->
+		</div>
+		<!-- Content Wrapper / End -->
+
+		<div id="footer-bottom">
+			<!-- Container -->
+			<div class="container">
+				<div class="eight columns">&copy; Text Here  || Blog powered by <a href="http://getpelican.com">Pelican</a></div>
+					<div class="eight columns">
+						<ul class="social-icons-footer">
+								<li>
+									<a href="https://plus.google.com/u/0/+AbhishekBajpaiJi" class="tooltip top" title="Google+">
+										<i class="icon-google+"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/abhisheietk" class="tooltip top" title="Twitter">
+										<i class="icon-twitter"></i>
+									</a>
+								</li>
+							<li><a href="./None" class="tooltip top" title="RSS"><i class="icon-rss"></i></a></li>
+						</ul>
+					</div>
+			</div>
+			<!-- Container / End -->
+		</div>
+		<!-- Footer Bottom / End -->
+
+	<!-- Javascripts -->
+	<script src="./theme/js/jquery.min.js"></script>
+	</body>
+</html>
