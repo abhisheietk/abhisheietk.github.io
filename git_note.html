@@ -4,23 +4,23 @@
 <html lang="en">
 <!--<![endif]-->
 	<head>
-        <meta charset="utf-8">
+            <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="author" content="Abhishek Bajpai">
 
 
-        <title>devnotes - Archives for 2015</title>
+        <title>devnotes - Git&nbsp;Note</title>
 
 
         <!-- CSS -->
-        <link rel="stylesheet" href="../../theme/css/style.css">
+        <link rel="stylesheet" href="./theme/css/style.css">
 
         <!-- Custom CSS -->
-        	<link rel="stylesheet" href="../../theme/css/colors/red.css" id="colors">
+        	<link rel="stylesheet" href="./theme/css/colors/red.css" id="colors">
 
         <!-- Code highlight color scheme -->
-            <link href="../../theme/css/code_blocks/darkly.css" rel="stylesheet">
+            <link href="./theme/css/code_blocks/darkly.css" rel="stylesheet">
 
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -30,8 +30,21 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-                <meta property="og:locale" content="">
+
+
+
+        <meta name="tags" contents="git" />
+
+	                <meta property="og:locale" content="">
 		<meta property="og:site_name" content="devnotes">
+
+	<meta property="og:type" content="article">
+	<meta property="article:author" content="">
+	<meta property="og:url" content="./git_note.html">
+	<meta property="og:title" content="Git&nbsp;Note">
+	<meta property="og:description" content="">
+	   <meta property="og:image" content="./images/guilherme-toti.jpg">
+	<meta property="article:published_time" content="2018-08-27 10:20:00+05:30">
 	</head>
 	<body>
 		<header id="header">
@@ -40,7 +53,7 @@
 				<!-- Logo / Mobile Menu -->
 				<div class="five columns">
 					<div id="textlogo">
-						<h1><a href="../../">devnotes</a></h1>
+						<h1><a href="./">devnotes</a></h1>
 					</div>
 				</div>
 						<!-- Navigation
@@ -50,7 +63,7 @@
 					<nav id="navigation" class="menu">
 						<ul id="responsive">
 
-							<li><a href="../../">Home</a></li>
+							<li><a href="./">Home</a></li>
 
 
 						</ul>
@@ -70,8 +83,9 @@
 					<nav id="breadcrumbs">
 						<ul>
 							<li>You are here:</li>
-							<li><a href="../../">Home</a></li>
-<li>Archives for 2015</li>
+							<li><a href="./">Home</a></li>
+<li><a href="./category/notes.html">notes</a></li>
+<li>Git&nbsp;Note</li>
 						</ul>
 					</nav>
 				</div>
@@ -81,17 +95,38 @@
 
 			<div class="container">
 	<div class="twelve alt columns">
-    <h3 class="headline">Archives for 2015</h3>
-    <span class="line" style="margin-bottom:30px;"></span>
-    <div class="clearfix"></div>
+<article class="post" style="margin: 0; border: 0;">
 
-    <dl>
-            <dt>Sat 17 October 2015</dt>
-            <dd><a href="../../ca.html">Creating <span class="caps">CA</span></a></dd>
-            <dt>Thu 08 October 2015</dt>
-            <dd><a href="../../web2py_smtp.html">Enabling <span class="caps">SMTP</span> authentication <span class="caps">PLAIN</span> mechanism for&nbsp;web2py</a></dd>
-        <hr>
-    </dl>
+	<div class="post-format">
+		<div class="circle"><i class="icon-pencil"></i><span></span></div>
+	</div>
+
+	<section class="post-content">
+
+		<header class="meta">
+			<h2><a href="./git_note.html">Git&nbsp;Note</a></h2>
+			<ul>
+				<li>By <a href="./author/abhishek-bajpai.html">Abhishek Bajpai</a></li>
+				<li>Mon 27 August 2018</li>
+			</ul>
+		</header>
+
+		<h1>Adding&nbsp;Submodules</h1>
+<div class="highlight"><pre><span></span>localhost:~ $ git submodule add &lt;git repo&gt; &lt;folder&gt;
+</pre></div>
+		    <div class="tags">
+		        <p>tags: <a href="./tag/git.html">git</a></p>
+		    </div>
+
+<div class="sharing">
+</div>
+<hr>
+
+	</section>
+	<div class="clearfix"></div>
+
+</article>
+
 	</div>
 
 	<!-- Sidebar -->
@@ -107,9 +142,9 @@
 			<h3 class="headline">Categories</h3><span class="line"></span><div class="clearfix"></div>
 			<nav class="categories">
 				<ul>
-					    <li><a href="../../category/myhdl.html">Myhdl</a></li>
-					    <li><a href="../../category/notes.html">notes</a></li>
-					    <li><a href="../../category/web2py.html">web2py</a></li>
+					    <li><a href="./category/myhdl.html">Myhdl</a></li>
+					    <li class="active"><a href="./category/notes.html">notes</a></li>
+					    <li><a href="./category/web2py.html">web2py</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -117,13 +152,13 @@
 		<!-- Tags -->
 		<div class="widget">
 			<h3 class="headline">Tags</h3><span class="line"></span><div class="clearfix"></div>
-			<nav class="tags">				    <a href="../../tag/bash.html">bash</a>
-				    <a href="../../tag/git.html">git</a>
-				    <a href="../../tag/myhdl.html">Myhdl</a>
-				    <a href="../../tag/openssl.html">openssl</a>
-				    <a href="../../tag/pandas.html">pandas</a>
-				    <a href="../../tag/python.html">python</a>
-				    <a href="../../tag/web2py.html">web2py</a>
+			<nav class="tags">				    <a href="./tag/bash.html">bash</a>
+				    <a href="./tag/git.html">git</a>
+				    <a href="./tag/myhdl.html">Myhdl</a>
+				    <a href="./tag/openssl.html">openssl</a>
+				    <a href="./tag/pandas.html">pandas</a>
+				    <a href="./tag/python.html">python</a>
+				    <a href="./tag/web2py.html">web2py</a>
 			</nav>
 		</div>
 	</div>
@@ -148,7 +183,7 @@
 										<i class="icon-twitter"></i>
 									</a>
 								</li>
-							<li><a href="../../None" class="tooltip top" title="RSS"><i class="icon-rss"></i></a></li>
+							<li><a href="./None" class="tooltip top" title="RSS"><i class="icon-rss"></i></a></li>
 						</ul>
 					</div>
 			</div>
@@ -157,6 +192,6 @@
 		<!-- Footer Bottom / End -->
 
 	<!-- Javascripts -->
-	<script src="../../theme/js/jquery.min.js"></script>
+	<script src="./theme/js/jquery.min.js"></script>
 	</body>
 </html>

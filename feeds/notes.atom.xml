@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>devnotes - notes</title><link href="https://abhisheietk.github.io/" rel="alternate"></link><link href="https://abhisheietk.github.io/feeds/notes.atom.xml" rel="self"></link><id>https://abhisheietk.github.io/</id><updated>2018-09-05T00:00:00+05:30</updated><entry><title>Bash-Notes</title><link href="https://abhisheietk.github.io/bash-notes.html" rel="alternate"></link><published>2018-09-05T00:00:00+05:30</published><updated>2018-09-05T00:00:00+05:30</updated><author><name>Abhishek Bajpai</name></author><id>tag:abhisheietk.github.io,2018-09-05:/bash-notes.html</id><summary type="html">&lt;p&gt;Notes on &lt;span class="caps"&gt;BASH&lt;/span&gt;&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Yum via socks5&amp;nbsp;proxy&lt;/h1&gt;
+&lt;h2&gt;Creating socks5&amp;nbsp;proxy&lt;/h2&gt;
+&lt;p&gt;To start such a connection, run the following command in your&amp;nbsp;terminal.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ssh -D &lt;span class="m"&gt;1337&lt;/span&gt; -q -C -N user@server.com
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add this line to&amp;nbsp;/etc/yum.conf&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;proxy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;socks5://ip:port
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In case host name resolution through proxy is&amp;nbsp;required.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;proxy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;socks5h://ip:port
+&lt;/pre&gt;&lt;/div&gt;</content><category term="bash"></category></entry><entry><title>Git Note</title><link href="https://abhisheietk.github.io/git_note.html" rel="alternate"></link><published>2018-08-27T10:20:00+05:30</published><updated>2018-08-27T10:20:00+05:30</updated><author><name>Abhishek Bajpai</name></author><id>tag:abhisheietk.github.io,2018-08-27:/git_note.html</id><summary type="html">&lt;p&gt;Note on&amp;nbsp;Git&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Adding&amp;nbsp;Submodules&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;localhost:~ $ git submodule add &amp;lt;git repo&amp;gt; &amp;lt;folder&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>Pandas Note</title><link href="https://abhisheietk.github.io/pandas_note.html" rel="alternate"></link><published>2018-08-26T10:20:00+05:30</published><updated>2018-08-26T10:20:00+05:30</updated><author><name>Abhishek Bajpai</name></author><id>tag:abhisheietk.github.io,2018-08-26:/pandas_note.html</id><summary type="html">&lt;p&gt;Note on pandas&amp;nbsp;library&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Iterate over rows in a&amp;nbsp;DataFrame&lt;/h1&gt;
+&lt;p&gt;iterrows is a generator which yield both index and&amp;nbsp;row&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Abhishek&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Age&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Anurag&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Age&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="p"&gt;},])&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iterrows&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Age&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category><category term="pandas"></category></entry><entry><title>Creating CA</title><link href="https://abhisheietk.github.io/ca.html" rel="alternate"></link><published>2015-10-17T16:47:21+05:30</published><updated>2015-10-17T16:47:21+05:30</updated><author><name>Abhishek Bajpai</name></author><id>tag:abhisheietk.github.io,2015-10-17:/ca.html</id><summary type="html">&lt;p&gt;Notes on &lt;span class="caps"&gt;CA&lt;/span&gt;&amp;nbsp;creation&lt;/p&gt;</summary><content type="html">&lt;p&gt;Create a 
+{% highlight sh %}
+[ ca&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;&lt;code&gt;man ca&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;default_ca =&amp;nbsp;CA_default&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;[ CA_default&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;Directory and file&amp;nbsp;locations.&lt;/h1&gt;
+&lt;p&gt;dir               = ./
+certs             = $dir/certs
+crl_dir           = $dir/crl
+new_certs_dir     = $dir/newcerts
+database          = $dir/index.txt
+serial            = $dir/serial
+&lt;span class="caps"&gt;RANDFILE&lt;/span&gt;          =&amp;nbsp;$dir/private/.rand&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;h1&gt;The root key and root&amp;nbsp;certificate.&lt;/h1&gt;
+&lt;p&gt;private_key       = $dir/private/ca.key.pem
+certificate       =&amp;nbsp;$dir/certs/ca.cert.pem&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;h1&gt;For certificate revocation&amp;nbsp;lists.&lt;/h1&gt;
+&lt;p&gt;crlnumber         = $dir/crlnumber
+crl               = $dir/crl/ca.crl.pem
+crl_extensions    = crl_ext
+default_crl_days  =&amp;nbsp;30&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;h1&gt;&lt;span class="caps"&gt;SHA&lt;/span&gt;-1 is deprecated, so use &lt;span class="caps"&gt;SHA&lt;/span&gt;-2&amp;nbsp;instead.&lt;/h1&gt;
+&lt;p&gt;default_md        = sha256
+name_opt          = ca_default
+cert_opt          = ca_default
+default_days      = 375
+preserve          = no
+policy            =&amp;nbsp;policy_strict&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;[ policy_strict&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;The root &lt;span class="caps"&gt;CA&lt;/span&gt; should only sign intermediate certificates that&amp;nbsp;match.&lt;/h1&gt;
+&lt;h1&gt;See the &lt;span class="caps"&gt;POLICY&lt;/span&gt; &lt;span class="caps"&gt;FORMAT&lt;/span&gt; section of &lt;code&gt;man ca&lt;/code&gt;.&lt;/h1&gt;
+&lt;p&gt;countryName             = match
+stateOrProvinceName     = match
+organizationName        = match
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            =&amp;nbsp;optional&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;[ policy_loose&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;Allow the intermediate &lt;span class="caps"&gt;CA&lt;/span&gt; to sign a more diverse range of&amp;nbsp;certificates.&lt;/h1&gt;
+&lt;h1&gt;See the &lt;span class="caps"&gt;POLICY&lt;/span&gt; &lt;span class="caps"&gt;FORMAT&lt;/span&gt; section of the &lt;code&gt;ca&lt;/code&gt; man&amp;nbsp;page.&lt;/h1&gt;
+&lt;p&gt;countryName             = optional
+stateOrProvinceName     = optional
+localityName            = optional
+organizationName        = optional
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            =&amp;nbsp;optional&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;[ req&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;Options for the &lt;code&gt;req&lt;/code&gt; tool (&lt;code&gt;man req&lt;/code&gt;).&lt;/h1&gt;
+&lt;p&gt;default_bits        = 2048
+distinguished_name  = req_distinguished_name
+string_mask         =&amp;nbsp;utf8only&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;h1&gt;&lt;span class="caps"&gt;SHA&lt;/span&gt;-1 is deprecated, so use &lt;span class="caps"&gt;SHA&lt;/span&gt;-2&amp;nbsp;instead.&lt;/h1&gt;
+&lt;p&gt;default_md          =&amp;nbsp;sha256&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;h1&gt;Extension to add when the -x509 option is&amp;nbsp;used.&lt;/h1&gt;
+&lt;p&gt;x509_extensions     =&amp;nbsp;v3_ca&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;[ req_distinguished_name&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;See &lt;a href="https://en.wikipedia.org/wiki/Certificate_signing_request"&gt;https://en.wikipedia.org/wiki/Certificate_signing_request&lt;/a&gt;.&lt;/h1&gt;
+&lt;p&gt;countryName                     = &lt;span class="caps"&gt;IN&lt;/span&gt;
+stateOrProvinceName             = Maharashtra
+localityName                    = Mumbai
+0.organizationName              = Anushakti Nagar
+organizationalUnitName          = Nilgiri
+commonName                      = Common Name
+emailAddress                    =&amp;nbsp;abhisheietk@gmail.com&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;h1&gt;Optionally, specify some&amp;nbsp;defaults.&lt;/h1&gt;
+&lt;p&gt;countryName_default             = &lt;span class="caps"&gt;IN&lt;/span&gt;
+stateOrProvinceName_default     = Maharashtra
+localityName_default            =
+0.organizationName_default      = Anushakti&amp;nbsp;Nagar&lt;/p&gt;
+&lt;h1&gt;organizationalUnitName_default&amp;nbsp;=&lt;/h1&gt;
+&lt;h1&gt;emailAddress_default&amp;nbsp;=&lt;/h1&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;[ v3_ca&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;Extensions for a typical &lt;span class="caps"&gt;CA&lt;/span&gt; (&lt;code&gt;man x509v3_config&lt;/code&gt;).&lt;/h1&gt;
+&lt;p&gt;subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, &lt;span class="caps"&gt;CA&lt;/span&gt;:true
+keyUsage = critical, digitalSignature, cRLSign,&amp;nbsp;keyCertSign&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;[ v3_intermediate_ca&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;Extensions for a typical intermediate &lt;span class="caps"&gt;CA&lt;/span&gt; (&lt;code&gt;man x509v3_config&lt;/code&gt;).&lt;/h1&gt;
+&lt;p&gt;subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, &lt;span class="caps"&gt;CA&lt;/span&gt;:true, pathlen:0
+keyUsage = critical, digitalSignature, cRLSign,&amp;nbsp;keyCertSign&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;[ usr_cert&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;Extensions for client certificates (&lt;code&gt;man x509v3_config&lt;/code&gt;).&lt;/h1&gt;
+&lt;p&gt;basicConstraints = &lt;span class="caps"&gt;CA&lt;/span&gt;:&lt;span class="caps"&gt;FALSE&lt;/span&gt;
+nsCertType = client, email
+nsComment = &amp;#8220;OpenSSL Generated Client Certificate&amp;#8221;
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage = clientAuth,&amp;nbsp;emailProtection&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;[ server_cert&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;Extensions for server certificates (&lt;code&gt;man x509v3_config&lt;/code&gt;).&lt;/h1&gt;
+&lt;p&gt;basicConstraints = &lt;span class="caps"&gt;CA&lt;/span&gt;:&lt;span class="caps"&gt;FALSE&lt;/span&gt;
+nsCertType = server
+nsComment = &amp;#8220;OpenSSL Generated Server Certificate&amp;#8221;
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer:always
+keyUsage = critical, digitalSignature, keyEncipherment
+extendedKeyUsage =&amp;nbsp;serverAuth&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;[ crl_ext&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;Extension for CRLs (&lt;code&gt;man x509v3_config&lt;/code&gt;).&lt;/h1&gt;
+&lt;p&gt;authorityKeyIdentifier=keyid:always&lt;/p&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;[ ocsp&amp;nbsp;]&lt;/p&gt;
+&lt;h1&gt;Extension for &lt;span class="caps"&gt;OCSP&lt;/span&gt; signing certificates (&lt;code&gt;man ocsp&lt;/code&gt;).&lt;/h1&gt;
+&lt;p _="%" endhighlight&gt;basicConstraints = &lt;span class="caps"&gt;CA&lt;/span&gt;:&lt;span class="caps"&gt;FALSE&lt;/span&gt;
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+keyUsage = critical, digitalSignature
+extendedKeyUsage = critical,&amp;nbsp;OCSPSigning&lt;/p&gt;
+&lt;p&gt;{% highlight sh&amp;nbsp;%}&lt;/p&gt;
+&lt;h1&gt;!/usr/bin/bash&lt;/h1&gt;
+&lt;p _="%" endhighlight&gt;&lt;span class="caps"&gt;CADIR&lt;/span&gt;=${1}
+for i in certs private newcerts
+do
+    mkdir -p ${&lt;span class="caps"&gt;CADIR&lt;/span&gt;}/${i}
+done
+cp ca.cnf ${&lt;span class="caps"&gt;CADIR&lt;/span&gt;}/openssl.cnf
+openssl genrsa -aes256 -out private/ca.key.pem 4096
+openssl req -config openssl.cnf -key private/ca.key.pem -new -x509 -days 7300 -sha256 -extensions v3_ca -out&amp;nbsp;certs/ca.cert.pem&lt;/p&gt;</content><category term="openssl"></category></entry></feed>

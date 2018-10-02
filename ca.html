@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+	<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="author" content="Abhishek Bajpai">
+
+
+        <title>devnotes - Creating <span class="caps">CA</span></title>
+
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./theme/css/style.css">
+
+        <!-- Custom CSS -->
+        	<link rel="stylesheet" href="./theme/css/colors/red.css" id="colors">
+
+        <!-- Code highlight color scheme -->
+            <link href="./theme/css/code_blocks/darkly.css" rel="stylesheet">
+
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+
+        <meta name="tags" contents="openssl" />
+
+	                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="devnotes">
+
+	<meta property="og:type" content="article">
+	<meta property="article:author" content="">
+	<meta property="og:url" content="./ca.html">
+	<meta property="og:title" content="Creating <span class="caps">CA</span>">
+	<meta property="og:description" content="">
+	   <meta property="og:image" content="./images/guilherme-toti.jpg">
+	<meta property="article:published_time" content="2015-10-17 16:47:21+05:30">
+	</head>
+	<body>
+		<header id="header">
+			<!-- Container -->
+			<div class="container">
+				<!-- Logo / Mobile Menu -->
+				<div class="five columns">
+					<div id="textlogo">
+						<h1><a href="./">devnotes</a></h1>
+					</div>
+				</div>
+						<!-- Navigation
+				================================================== -->
+				<div class="eleven columns">
+
+					<nav id="navigation" class="menu">
+						<ul id="responsive">
+
+							<li><a href="./">Home</a></li>
+
+
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- Container / End -->
+		</header>
+		<!-- Header / End -->
+
+		<!-- Breadcrumbs Container-->
+		<div id="content-wrapper">
+			<section id="titlebar">
+				<!-- Container -->
+				<div class="container">
+				<div class="thirteen columns">
+					<nav id="breadcrumbs">
+						<ul>
+							<li>You are here:</li>
+							<li><a href="./">Home</a></li>
+<li><a href="./category/notes.html">notes</a></li>
+<li>Creating <span class="caps">CA</span></li>
+						</ul>
+					</nav>
+				</div>
+				</div>
+				<!-- Container / End -->
+			</section>
+
+			<div class="container">
+	<div class="twelve alt columns">
+<article class="post" style="margin: 0; border: 0;">
+
+	<div class="post-format">
+		<div class="circle"><i class="icon-pencil"></i><span></span></div>
+	</div>
+
+	<section class="post-content">
+
+		<header class="meta">
+			<h2><a href="./ca.html">Creating <span class="caps">CA</span></a></h2>
+			<ul>
+				<li>By <a href="./author/abhishek-bajpai.html">Abhishek Bajpai</a></li>
+				<li>Sat 17 October 2015</li>
+			</ul>
+		</header>
+
+		<p>Create a 
+{% highlight sh %}
+[ ca&nbsp;]</p>
+<h1><code>man ca</code></h1>
+<p>default_ca =&nbsp;CA_default</p>
+<h1></h1>
+<p>[ CA_default&nbsp;]</p>
+<h1>Directory and file&nbsp;locations.</h1>
+<p>dir               = ./
+certs             = $dir/certs
+crl_dir           = $dir/crl
+new_certs_dir     = $dir/newcerts
+database          = $dir/index.txt
+serial            = $dir/serial
+<span class="caps">RANDFILE</span>          =&nbsp;$dir/private/.rand</p>
+<h1></h1>
+<h1>The root key and root&nbsp;certificate.</h1>
+<p>private_key       = $dir/private/ca.key.pem
+certificate       =&nbsp;$dir/certs/ca.cert.pem</p>
+<h1></h1>
+<h1>For certificate revocation&nbsp;lists.</h1>
+<p>crlnumber         = $dir/crlnumber
+crl               = $dir/crl/ca.crl.pem
+crl_extensions    = crl_ext
+default_crl_days  =&nbsp;30</p>
+<h1></h1>
+<h1><span class="caps">SHA</span>-1 is deprecated, so use <span class="caps">SHA</span>-2&nbsp;instead.</h1>
+<p>default_md        = sha256
+name_opt          = ca_default
+cert_opt          = ca_default
+default_days      = 375
+preserve          = no
+policy            =&nbsp;policy_strict</p>
+<h1></h1>
+<p>[ policy_strict&nbsp;]</p>
+<h1>The root <span class="caps">CA</span> should only sign intermediate certificates that&nbsp;match.</h1>
+<h1>See the <span class="caps">POLICY</span> <span class="caps">FORMAT</span> section of <code>man ca</code>.</h1>
+<p>countryName             = match
+stateOrProvinceName     = match
+organizationName        = match
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            =&nbsp;optional</p>
+<h1></h1>
+<p>[ policy_loose&nbsp;]</p>
+<h1>Allow the intermediate <span class="caps">CA</span> to sign a more diverse range of&nbsp;certificates.</h1>
+<h1>See the <span class="caps">POLICY</span> <span class="caps">FORMAT</span> section of the <code>ca</code> man&nbsp;page.</h1>
+<p>countryName             = optional
+stateOrProvinceName     = optional
+localityName            = optional
+organizationName        = optional
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            =&nbsp;optional</p>
+<h1></h1>
+<p>[ req&nbsp;]</p>
+<h1>Options for the <code>req</code> tool (<code>man req</code>).</h1>
+<p>default_bits        = 2048
+distinguished_name  = req_distinguished_name
+string_mask         =&nbsp;utf8only</p>
+<h1></h1>
+<h1><span class="caps">SHA</span>-1 is deprecated, so use <span class="caps">SHA</span>-2&nbsp;instead.</h1>
+<p>default_md          =&nbsp;sha256</p>
+<h1></h1>
+<h1>Extension to add when the -x509 option is&nbsp;used.</h1>
+<p>x509_extensions     =&nbsp;v3_ca</p>
+<h1></h1>
+<p>[ req_distinguished_name&nbsp;]</p>
+<h1>See <a href="https://en.wikipedia.org/wiki/Certificate_signing_request">https://en.wikipedia.org/wiki/Certificate_signing_request</a>.</h1>
+<p>countryName                     = <span class="caps">IN</span>
+stateOrProvinceName             = Maharashtra
+localityName                    = Mumbai
+0.organizationName              = Anushakti Nagar
+organizationalUnitName          = Nilgiri
+commonName                      = Common Name
+emailAddress                    =&nbsp;abhisheietk@gmail.com</p>
+<h1></h1>
+<h1>Optionally, specify some&nbsp;defaults.</h1>
+<p>countryName_default             = <span class="caps">IN</span>
+stateOrProvinceName_default     = Maharashtra
+localityName_default            =
+0.organizationName_default      = Anushakti&nbsp;Nagar</p>
+<h1>organizationalUnitName_default&nbsp;=</h1>
+<h1>emailAddress_default&nbsp;=</h1>
+<h1></h1>
+<p>[ v3_ca&nbsp;]</p>
+<h1>Extensions for a typical <span class="caps">CA</span> (<code>man x509v3_config</code>).</h1>
+<p>subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, <span class="caps">CA</span>:true
+keyUsage = critical, digitalSignature, cRLSign,&nbsp;keyCertSign</p>
+<h1></h1>
+<p>[ v3_intermediate_ca&nbsp;]</p>
+<h1>Extensions for a typical intermediate <span class="caps">CA</span> (<code>man x509v3_config</code>).</h1>
+<p>subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, <span class="caps">CA</span>:true, pathlen:0
+keyUsage = critical, digitalSignature, cRLSign,&nbsp;keyCertSign</p>
+<h1></h1>
+<p>[ usr_cert&nbsp;]</p>
+<h1>Extensions for client certificates (<code>man x509v3_config</code>).</h1>
+<p>basicConstraints = <span class="caps">CA</span>:<span class="caps">FALSE</span>
+nsCertType = client, email
+nsComment = &#8220;OpenSSL Generated Client Certificate&#8221;
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage = clientAuth,&nbsp;emailProtection</p>
+<h1></h1>
+<p>[ server_cert&nbsp;]</p>
+<h1>Extensions for server certificates (<code>man x509v3_config</code>).</h1>
+<p>basicConstraints = <span class="caps">CA</span>:<span class="caps">FALSE</span>
+nsCertType = server
+nsComment = &#8220;OpenSSL Generated Server Certificate&#8221;
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer:always
+keyUsage = critical, digitalSignature, keyEncipherment
+extendedKeyUsage =&nbsp;serverAuth</p>
+<h1></h1>
+<p>[ crl_ext&nbsp;]</p>
+<h1>Extension for CRLs (<code>man x509v3_config</code>).</h1>
+<p>authorityKeyIdentifier=keyid:always</p>
+<h1></h1>
+<p>[ ocsp&nbsp;]</p>
+<h1>Extension for <span class="caps">OCSP</span> signing certificates (<code>man ocsp</code>).</h1>
+<p _="%" endhighlight>basicConstraints = <span class="caps">CA</span>:<span class="caps">FALSE</span>
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+keyUsage = critical, digitalSignature
+extendedKeyUsage = critical,&nbsp;OCSPSigning</p>
+<p>{% highlight sh&nbsp;%}</p>
+<h1>!/usr/bin/bash</h1>
+<p _="%" endhighlight><span class="caps">CADIR</span>=${1}
+for i in certs private newcerts
+do
+    mkdir -p ${<span class="caps">CADIR</span>}/${i}
+done
+cp ca.cnf ${<span class="caps">CADIR</span>}/openssl.cnf
+openssl genrsa -aes256 -out private/ca.key.pem 4096
+openssl req -config openssl.cnf -key private/ca.key.pem -new -x509 -days 7300 -sha256 -extensions v3_ca -out&nbsp;certs/ca.cert.pem</p>
+		    <div class="tags">
+		        <p>tags: <a href="./tag/openssl.html">openssl</a></p>
+		    </div>
+
+<div class="sharing">
+</div>
+<hr>
+
+	</section>
+	<div class="clearfix"></div>
+
+</article>
+
+	</div>
+
+	<!-- Sidebar -->
+	<div class="four columns">
+		<!-- About  -->
+		<div class="widget no-mg-top">
+			<h3 class="headline">About</h3><span class="line"></span><div class="clearfix"></div>
+			<p>This is the place holder for my technical endivors.</p>
+		</div>
+
+		<!-- Categories -->
+		<div class="widget">
+			<h3 class="headline">Categories</h3><span class="line"></span><div class="clearfix"></div>
+			<nav class="categories">
+				<ul>
+					    <li><a href="./category/myhdl.html">Myhdl</a></li>
+					    <li class="active"><a href="./category/notes.html">notes</a></li>
+					    <li><a href="./category/web2py.html">web2py</a></li>
+				</ul>
+			</nav>
+		</div>
+		
+		<!-- Tags -->
+		<div class="widget">
+			<h3 class="headline">Tags</h3><span class="line"></span><div class="clearfix"></div>
+			<nav class="tags">				    <a href="./tag/bash.html">bash</a>
+				    <a href="./tag/git.html">git</a>
+				    <a href="./tag/myhdl.html">Myhdl</a>
+				    <a href="./tag/openssl.html">openssl</a>
+				    <a href="./tag/pandas.html">pandas</a>
+				    <a href="./tag/python.html">python</a>
+				    <a href="./tag/web2py.html">web2py</a>
+			</nav>
+		</div>
+	</div>
+			</div>
+			<!-- Container / End -->
+		</div>
+		<!-- Content Wrapper / End -->
+
+		<div id="footer-bottom">
+			<!-- Container -->
+			<div class="container">
+				<div class="eight columns">&copy; Text Here  || Blog powered by <a href="http://getpelican.com">Pelican</a></div>
+					<div class="eight columns">
+						<ul class="social-icons-footer">
+								<li>
+									<a href="https://plus.google.com/u/0/+AbhishekBajpaiJi" class="tooltip top" title="Google+">
+										<i class="icon-google+"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/abhisheietk" class="tooltip top" title="Twitter">
+										<i class="icon-twitter"></i>
+									</a>
+								</li>
+							<li><a href="./None" class="tooltip top" title="RSS"><i class="icon-rss"></i></a></li>
+						</ul>
+					</div>
+			</div>
+			<!-- Container / End -->
+		</div>
+		<!-- Footer Bottom / End -->
+
+	<!-- Javascripts -->
+	<script src="./theme/js/jquery.min.js"></script>
+	</body>
+</html>

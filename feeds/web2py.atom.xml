@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>devnotes - web2py</title><link href="https://abhisheietk.github.io/" rel="alternate"></link><link href="https://abhisheietk.github.io/feeds/web2py.atom.xml" rel="self"></link><id>https://abhisheietk.github.io/</id><updated>2015-10-08T16:47:21+05:30</updated><entry><title>Enabling SMTP authentication PLAIN mechanism for web2py</title><link href="https://abhisheietk.github.io/web2py_smtp.html" rel="alternate"></link><published>2015-10-08T16:47:21+05:30</published><updated>2015-10-08T16:47:21+05:30</updated><author><name>Abhishek Bajpai</name></author><id>tag:abhisheietk.github.io,2015-10-08:/web2py_smtp.html</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;SMTP&lt;/span&gt; authentication &lt;span class="caps"&gt;PLAIN&lt;/span&gt; mechanism for&amp;nbsp;web2py&lt;/p&gt;</summary><content type="html">&lt;p&gt;Some &lt;span class="caps"&gt;SMTP&lt;/span&gt; servers needs clients to configuration for authentication mechanism. Their is no way to configure this mechanism in&amp;nbsp;web2py.&lt;/p&gt;
+&lt;p&gt;In order to enable this mechanism changes are required in&amp;nbsp;/usr/lib64/python2.7/smtplib.py&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;AUTH_PLAIN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;PLAIN&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;AUTH_CRAM_MD5&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;CRAM-MD5&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;AUTH_LOGIN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;LOGIN&amp;quot;&lt;/span&gt;
+
+    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ehlo_or_helo_if_needed&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;has_extn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;auth&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;SMTPException&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;SMTP AUTH extension not supported by server.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Authentication methods the server supports:&lt;/span&gt;
+    &lt;span class="n"&gt;authlist&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;esmtp_features&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;auth&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# List of authentication methods we support: from preferred to&lt;/span&gt;
+    &lt;span class="c1"&gt;# less preferred methods. Except for the purpose of testing the weaker&lt;/span&gt;
+    &lt;span class="c1"&gt;# ones, we prefer stronger methods like CRAM-MD5:&lt;/span&gt;
+    &lt;span class="n"&gt;preferred_auths&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;AUTH_CRAM_MD5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AUTH_PLAIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AUTH_LOGIN&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Determine the authentication method we&amp;#39;ll use&lt;/span&gt;
+    &lt;span class="n"&gt;authmethod&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;just modify the preferred_auths list according to your preferred&amp;nbsp;settings.&lt;/p&gt;
+&lt;p&gt;In my&amp;nbsp;case&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;preferred_auths&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;AUTH_PLAIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AUTH_CRAM_MD5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AUTH_PLAIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AUTH_LOGIN&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category><category term="web2py"></category></entry></feed>
